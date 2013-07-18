@@ -2,6 +2,7 @@ from gevent import monkey; monkey.patch_socket()
 import gevent
 from gevent.pool import Pool
 import json
+import csv
 from guidestar import get_guidestar
 from pprint import pprint
 
@@ -27,7 +28,7 @@ if __name__=="__main__":
         recepients = list(set(recepients))
         recepients = [ {'name' : x } for x in recepients ]
     
-    pool = Pool(4)
+    pool = Pool(10)
     for rec in recepients:
         if rec.has_key('url') and False:
             results.append(rec)
@@ -36,5 +37,7 @@ if __name__=="__main__":
     pool.join()
     print(len(results))
     json.dump(results,file("recepients.json","w"))
-
+    fields = ['name','url','objective','address']
+    utf8results = [ dict([(f,r.get(f,'').encode('utf8')) for f in fields]) for r in results ]
+    csv.DictWriter(file("recipients.csv","w"),fields).writerows(utf8results)
     
