@@ -82,8 +82,8 @@ SECRET_KEY = 'eoxt8dtc5t-!zjwe5yr)p8ov3#r#!(x&amp;pf=szo=^j6z@03ts87'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.filesystem.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
 
@@ -116,12 +116,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
+    'grappelli',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'grants',
-    'easy_maps',
     'taggit',
+    'geoposition',
 )
 
 # A sample logging configuration. The only tangible logging

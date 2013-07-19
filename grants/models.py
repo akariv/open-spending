@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from easy_maps.models import Address
 from taggit.managers import TaggableManager
+from geoposition.fields import GeopositionField
 
 
 class Grant(models.Model):
@@ -24,7 +24,7 @@ class Grant(models.Model):
     budget_approved = models.IntegerField(u'תקציב שאושר')
     budget_transferred = models.IntegerField(u'תקציב שהועבר')
     regulation = models.ForeignKey('Regulation', verbose_name=u'תקנה')
-    type = models.IntegerField(u'סוג התמיכה' ,choices=GRANT_TYPES)
+    type = models.IntegerField(u'סוג התמיכה', choices=GRANT_TYPES)
 
     class Meta:
         verbose_name = u'תמיכה'
@@ -48,9 +48,10 @@ class Regulation(models.Model):
 
 class Organization(models.Model):
     name = models.CharField(u'שם הארגון', max_length=100)
+    tags = TaggableManager()
     homepage = models.URLField(u'אתר בית')
     agenda = models.TextField(u'מטרות הארגון')
-    tags = TaggableManager()
+    position = GeopositionField()
 
     class Meta:
         verbose_name = u'ארגון'
