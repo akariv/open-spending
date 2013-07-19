@@ -25,6 +25,7 @@ class Grant(models.Model):
     budget_transferred = models.IntegerField(u'תקציב שהועבר')
     regulation = models.ForeignKey('Regulation', verbose_name=u'תקנה')
     type = models.IntegerField(u'סוג התמיכה', choices=GRANT_TYPES)
+    ministry = models.ForeignKey('Ministry')
 
     class Meta:
         verbose_name = u'תמיכה'
