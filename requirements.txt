@@ -1,0 +1,4 @@
+Django==1.5.1
+django-easy-maps==0.8.2
+geopy==0.95.1
+wsgiref==0.1.2
