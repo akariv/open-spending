@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'grants',
     'easy_maps',
+    'taggit',
 )
 
 # A sample logging configuration. The only tangible logging
