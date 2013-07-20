@@ -7,6 +7,7 @@ django-geoposition==0.1.4
 django-grappelli==2.4.5
 django-money==0.3.3
 django-taggit==0.10a1
+djangorestframework==2.3.6
 geopy==0.95.1
 lxml==3.2.1
 py==1.4.15
