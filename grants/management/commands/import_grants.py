@@ -1,11 +1,13 @@
+# -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand
-from grants.csv_models import MyCsvModel
-import codecs
+import unicodecsv
+from grants import models
 
 
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-
-        my_csv_list = MyCsvModel.import_data(
-            data=codecs.open('data/grants.csv', encoding='utf-8'))
+        for row in unicodecsv.DictReader(open('data/grants.csv')):
+            models.Grant.create_from_csv_row(row)
+        for row in unicodecsv.DictReader(open('data/organizations.csv')):
+            models.Organization.fill_from_csv_row(row)
