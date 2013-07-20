@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     'grants',
     'taggit',
     'geoposition',
+    'rest_framework',
 )
 
 # A sample logging configuration. The only tangible logging
